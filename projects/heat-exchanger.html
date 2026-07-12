@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Heat Exchanger Study — Bishesha Dash</title>
+  <meta name="description" content="CFD-driven redesign of a shell-and-tube exchanger, improving heat transfer 22% at equal pressure drop.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html">BISHESHA<span>.</span>DASH</a>
+      <div class="nav__links">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <a class="crumb" href="../index.html#projects">&#8592; All projects</a>
+
+    <header class="project-head">
+      <span class="label label--accent">Project 03 &nbsp;/&nbsp; BD-2026-003</span>
+      <h1>Compact Heat Exchanger Study</h1>
+      <div class="card__tags"><span class="tag">CFD</span><span class="tag">Thermal</span><span class="tag">ANSYS Fluent</span></div>
+      <p class="project-head__summary">A CFD study of baffle geometry in a compact shell-and-tube heat exchanger, trading baffle cut and spacing to gain 22% heat transfer at constant pumping power.</p>
+    </header>
+
+    <figure class="figure">
+      <img src="../assets/heat-exchanger.svg" alt="Compact Heat Exchanger Study — CAD rendering placeholder">
+      <figcaption>FIG. 1 &nbsp;—&nbsp; PRIMARY CAD RENDERING &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+    </figure>
+
+    <section class="section overview">
+      <div class="prose">
+        <span class="label">Overview</span>
+        <h3 style="margin-top:12px">The problem &amp; the approach</h3>
+        <p>Shell-side flow in small heat exchangers is notoriously inefficient — large recirculation zones behind each baffle do little work. This study parameterised baffle cut, spacing and tilt to map the trade-off between heat transfer and pressure drop.</p>
+        <p>Thirty-two Fluent cases were run across the parameter space, with a validated mesh-independence study anchoring the results. The best configuration uses helical-tilted baffles at a 25% cut.</p>
+        <h3>Highlights</h3>
+        <ul>
+          <li>Parametric study: 32 CFD cases across baffle cut, spacing and tilt</li>
+          <li>Mesh independence verified to under 2% variation on Nusselt number</li>
+          <li>Result validated against Bell-Delaware hand calculations</li>
+        </ul>
+      </div>
+
+      <aside class="titleblock">
+        <div class="titleblock__head"><span>Title block</span><span>REV A</span></div>
+        <table>
+          <tr><td>Project no.</td><td>BD-2026-003</td></tr>
+          <tr><td>Duration</td><td>3 months</td></tr>
+          <tr><td>Fluids</td><td>Water / water</td></tr>
+          <tr><td>Tools</td><td>ANSYS Fluent</td></tr>
+          <tr><td>Status</td><td>Complete</td></tr>
+          <tr><td>Role</td><td>Thermal analysis</td></tr>
+        </table>
+      </aside>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section__head">
+        <h2>Technical drawings</h2>
+        <span class="label">SHEET 1 OF 1</span>
+      </div>
+      <div class="gallery">
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-003-A &nbsp;·&nbsp; ASSEMBLY</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-003-B &nbsp;·&nbsp; DETAIL</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-render.svg" alt="Exploded view placeholder">
+          <figcaption>DWG BD-2026-003-C &nbsp;·&nbsp; EXPLODED VIEW</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section analysis" style="padding-top:0">
+      <div>
+        <figure class="figure">
+          <img src="../assets/placeholder-analysis.svg" alt="Analysis result placeholder">
+          <figcaption>FIG. 2 &nbsp;—&nbsp; SIMULATION RESULT &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+        </figure>
+      </div>
+      <div class="prose">
+        <h3>Analysis &amp; results</h3>
+        <p>The k-omega SST model captured the separated flow behind baffles that a k-epsilon baseline missed entirely — recirculation volume fell 40% in the tilted-baffle design.</p>
+        <p>At matched pumping power the selected geometry delivers a 22% higher overall heat transfer coefficient, in agreement with Bell-Delaware estimates to within 9%.</p>
+        <div class="stats">
+          <div class="stat"><b>+22%</b><span>Heat transfer</span></div>
+          <div class="stat"><b>32</b><span>CFD cases</span></div>
+          <div class="stat"><b>-40%</b><span>Recirculation</span></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="fsae-upright.html">
+        <span class="label">&#8592; Previous</span>
+        <strong>FSAE Suspension Upright</strong>
+      </a>
+      <a href="prosthetic-hand.html">
+        <span class="label">Next &#8594;</span>
+        <strong>Low-Cost Prosthetic Hand</strong>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div>
+          <span class="label label--accent">Get in touch</span>
+          <h2>Let's build something.</h2>
+          <a class="email" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="footer__links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Resume</a>
+        </div>
+      </div>
+      <div class="footer__fine">
+        <span>&#169; 2026 BISHESHA DASH</span>
+        <span>DRAWN TO SCALE · BUILT TO LAST</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

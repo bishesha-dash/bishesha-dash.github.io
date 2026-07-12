@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptive Robotic Gripper — Bishesha Dash</title>
+  <meta name="description" content="Two-finger underactuated gripper that conforms to irregular objects using a single actuator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html">BISHESHA<span>.</span>DASH</a>
+      <div class="nav__links">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <a class="crumb" href="../index.html#projects">&#8592; All projects</a>
+
+    <header class="project-head">
+      <span class="label label--accent">Project 01 &nbsp;/&nbsp; BD-2026-001</span>
+      <h1>Adaptive Robotic Gripper</h1>
+      <div class="card__tags"><span class="tag">SolidWorks</span><span class="tag">FEA</span><span class="tag">3D Printing</span></div>
+      <p class="project-head__summary">An underactuated two-finger gripper designed to grasp irregular objects with a single servo, using compliant linkages tuned through iterative FEA and print-test cycles.</p>
+    </header>
+
+    <figure class="figure">
+      <img src="../assets/robotic-gripper.svg" alt="Adaptive Robotic Gripper — CAD rendering placeholder">
+      <figcaption>FIG. 1 &nbsp;—&nbsp; PRIMARY CAD RENDERING &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+    </figure>
+
+    <section class="section overview">
+      <div class="prose">
+        <span class="label">Overview</span>
+        <h3 style="margin-top:12px">The problem &amp; the approach</h3>
+        <p>This project set out to answer a simple question: how much grasping versatility can you get from one actuator? The answer turned out to be a four-bar linkage architecture with carefully tuned joint stiffness, letting the fingers passively wrap around whatever they touch.</p>
+        <p>The design went through four major revisions. Early prototypes gripped well but couldn't release reliably; the final revision adds a torsion-spring return and a redesigned palm geometry that centres objects during approach.</p>
+        <h3>Highlights</h3>
+        <ul>
+          <li>Single-servo actuation with passive adaptation to object geometry</li>
+          <li>Compliant PLA/TPU hybrid fingers validated against FEA predictions</li>
+          <li>Grasp force tunable from 2 N to 18 N via pre-load adjustment</li>
+        </ul>
+      </div>
+
+      <aside class="titleblock">
+        <div class="titleblock__head"><span>Title block</span><span>REV A</span></div>
+        <table>
+          <tr><td>Project no.</td><td>BD-2026-001</td></tr>
+          <tr><td>Duration</td><td>4 months</td></tr>
+          <tr><td>Material</td><td>PLA / TPU 95A</td></tr>
+          <tr><td>Tools</td><td>SolidWorks, ANSYS</td></tr>
+          <tr><td>Status</td><td>Prototype v4</td></tr>
+          <tr><td>Role</td><td>Design & analysis</td></tr>
+        </table>
+      </aside>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section__head">
+        <h2>Technical drawings</h2>
+        <span class="label">SHEET 1 OF 1</span>
+      </div>
+      <div class="gallery">
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-001-A &nbsp;·&nbsp; ASSEMBLY</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-001-B &nbsp;·&nbsp; DETAIL</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-render.svg" alt="Exploded view placeholder">
+          <figcaption>DWG BD-2026-001-C &nbsp;·&nbsp; EXPLODED VIEW</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section analysis" style="padding-top:0">
+      <div>
+        <figure class="figure">
+          <img src="../assets/placeholder-analysis.svg" alt="Analysis result placeholder">
+          <figcaption>FIG. 2 &nbsp;—&nbsp; SIMULATION RESULT &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+        </figure>
+      </div>
+      <div class="prose">
+        <h3>Analysis &amp; results</h3>
+        <p>Finger linkages were modelled as flexible bodies in ANSYS Static Structural to predict contact force distribution across object diameters from 20 mm to 90 mm.</p>
+        <p>The FEA drove two geometry changes: thickening the proximal joint web (peak stress dropped 34%) and moving the tendon anchor 6 mm distally for a flatter force curve.</p>
+        <div class="stats">
+          <div class="stat"><b>18 N</b><span>Max grip force</span></div>
+          <div class="stat"><b>34%</b><span>Stress reduction</span></div>
+          <div class="stat"><b>120 g</b><span>Moving mass</span></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="drone-frame.html">
+        <span class="label">&#8592; Previous</span>
+        <strong>Vibration-Tuned Drone Frame</strong>
+      </a>
+      <a href="fsae-upright.html">
+        <span class="label">Next &#8594;</span>
+        <strong>FSAE Suspension Upright</strong>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div>
+          <span class="label label--accent">Get in touch</span>
+          <h2>Let's build something.</h2>
+          <a class="email" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="footer__links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Resume</a>
+        </div>
+      </div>
+      <div class="footer__fine">
+        <span>&#169; 2026 BISHESHA DASH</span>
+        <span>DRAWN TO SCALE · BUILT TO LAST</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibration-Tuned Drone Frame — Bishesha Dash</title>
+  <meta name="description" content="Carbon-fibre quadcopter frame with arm resonances tuned away from motor excitation bands.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html">BISHESHA<span>.</span>DASH</a>
+      <div class="nav__links">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <a class="crumb" href="../index.html#projects">&#8592; All projects</a>
+
+    <header class="project-head">
+      <span class="label label--accent">Project 06 &nbsp;/&nbsp; BD-2026-006</span>
+      <h1>Vibration-Tuned Drone Frame</h1>
+      <div class="card__tags"><span class="tag">Modal Analysis</span><span class="tag">CFRP</span><span class="tag">Dynamics</span></div>
+      <p class="project-head__summary">A carbon-fibre quadcopter frame designed by modal analysis: arm natural frequencies are placed between motor excitation bands, cutting IMU vibration noise by half.</p>
+    </header>
+
+    <figure class="figure">
+      <img src="../assets/drone-frame.svg" alt="Vibration-Tuned Drone Frame — CAD rendering placeholder">
+      <figcaption>FIG. 1 &nbsp;—&nbsp; PRIMARY CAD RENDERING &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+    </figure>
+
+    <section class="section overview">
+      <div class="prose">
+        <span class="label">Overview</span>
+        <h3 style="margin-top:12px">The problem &amp; the approach</h3>
+        <p>Frame resonance is the quiet killer of drone flight performance — when an arm's natural frequency sits inside the motor RPM band, the IMU drowns in noise. This frame was designed frequency-first: geometry followed the modal targets.</p>
+        <p>Arm cross-sections and boom lengths were iterated in a parametric modal study until the first bending mode landed cleanly between hover and full-throttle excitation frequencies, then validated with tap tests on the built frame.</p>
+        <h3>Highlights</h3>
+        <ul>
+          <li>First arm bending mode placed between motor excitation bands</li>
+          <li>Tap-test validation within 4% of FEA modal predictions</li>
+          <li>IMU vibration noise halved versus the reference frame</li>
+        </ul>
+      </div>
+
+      <aside class="titleblock">
+        <div class="titleblock__head"><span>Title block</span><span>REV A</span></div>
+        <table>
+          <tr><td>Project no.</td><td>BD-2026-006</td></tr>
+          <tr><td>Duration</td><td>3 months</td></tr>
+          <tr><td>Material</td><td>CFRP twill, 3 mm</td></tr>
+          <tr><td>Tools</td><td>ANSYS Modal, Betaflight</td></tr>
+          <tr><td>Status</td><td>Flying</td></tr>
+          <tr><td>Role</td><td>Design & test</td></tr>
+        </table>
+      </aside>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section__head">
+        <h2>Technical drawings</h2>
+        <span class="label">SHEET 1 OF 1</span>
+      </div>
+      <div class="gallery">
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-006-A &nbsp;·&nbsp; ASSEMBLY</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-006-B &nbsp;·&nbsp; DETAIL</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-render.svg" alt="Exploded view placeholder">
+          <figcaption>DWG BD-2026-006-C &nbsp;·&nbsp; EXPLODED VIEW</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section analysis" style="padding-top:0">
+      <div>
+        <figure class="figure">
+          <img src="../assets/placeholder-analysis.svg" alt="Analysis result placeholder">
+          <figcaption>FIG. 2 &nbsp;—&nbsp; SIMULATION RESULT &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+        </figure>
+      </div>
+      <div class="prose">
+        <h3>Analysis &amp; results</h3>
+        <p>The parametric modal study swept arm width and wall thickness across 24 configurations, tracking the first three modes of each arm assembly with motors mounted.</p>
+        <p>Flight logs show gyro noise power in the 80-250 Hz band reduced 52% against the commercial reference frame at identical weight, confirming the tap-test results in flight.</p>
+        <div class="stats">
+          <div class="stat"><b>-52%</b><span>Gyro noise</span></div>
+          <div class="stat"><b>4%</b><span>FEA vs. tap test</span></div>
+          <div class="stat"><b>142 Hz</b><span>First mode</span></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="planetary-gearbox.html">
+        <span class="label">&#8592; Previous</span>
+        <strong>Planetary Gearbox Design</strong>
+      </a>
+      <a href="robotic-gripper.html">
+        <span class="label">Next &#8594;</span>
+        <strong>Adaptive Robotic Gripper</strong>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div>
+          <span class="label label--accent">Get in touch</span>
+          <h2>Let's build something.</h2>
+          <a class="email" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="footer__links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Resume</a>
+        </div>
+      </div>
+      <div class="footer__fine">
+        <span>&#169; 2026 BISHESHA DASH</span>
+        <span>DRAWN TO SCALE · BUILT TO LAST</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

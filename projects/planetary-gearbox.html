@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planetary Gearbox Design — Bishesha Dash</title>
+  <meta name="description" content="Single-stage 6:1 planetary gearbox designed from first principles — tooth geometry to housing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="../index.html">BISHESHA<span>.</span>DASH</a>
+      <div class="nav__links">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <a class="crumb" href="../index.html#projects">&#8592; All projects</a>
+
+    <header class="project-head">
+      <span class="label label--accent">Project 05 &nbsp;/&nbsp; BD-2026-005</span>
+      <h1>Planetary Gearbox Design</h1>
+      <div class="card__tags"><span class="tag">Gear Design</span><span class="tag">KISSsoft</span><span class="tag">Machining</span></div>
+      <p class="project-head__summary">A ground-up single-stage planetary gearbox: 6:1 ratio, sized from AGMA bending and contact stress first principles, then verified in KISSsoft and built.</p>
+    </header>
+
+    <figure class="figure">
+      <img src="../assets/planetary-gearbox.svg" alt="Planetary Gearbox Design — CAD rendering placeholder">
+      <figcaption>FIG. 1 &nbsp;—&nbsp; PRIMARY CAD RENDERING &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+    </figure>
+
+    <section class="section overview">
+      <div class="prose">
+        <span class="label">Overview</span>
+        <h3 style="margin-top:12px">The problem &amp; the approach</h3>
+        <p>Rather than pick a catalogue gearbox, this project designs one from scratch: ratio selection, tooth counts satisfying assembly constraints, profile shift optimisation, bearing sizing and a machinable housing.</p>
+        <p>The 72/24/24 tooth combination balances load sharing across three planets. Profile shift coefficients were tuned to equalise bending strength between sun and planet, the classic weak point in small planetaries.</p>
+        <h3>Highlights</h3>
+        <ul>
+          <li>AGMA hand calculations cross-checked against KISSsoft models</li>
+          <li>Profile shift tuned to balance sun/planet bending strength</li>
+          <li>Housing machined in two setups on a 3-axis mill</li>
+        </ul>
+      </div>
+
+      <aside class="titleblock">
+        <div class="titleblock__head"><span>Title block</span><span>REV A</span></div>
+        <table>
+          <tr><td>Project no.</td><td>BD-2026-005</td></tr>
+          <tr><td>Ratio</td><td>6:1 single stage</td></tr>
+          <tr><td>Material</td><td>16MnCr5, case hardened</td></tr>
+          <tr><td>Tools</td><td>KISSsoft, SolidWorks</td></tr>
+          <tr><td>Status</td><td>Built & tested</td></tr>
+          <tr><td>Role</td><td>Complete design</td></tr>
+        </table>
+      </aside>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="section__head">
+        <h2>Technical drawings</h2>
+        <span class="label">SHEET 1 OF 1</span>
+      </div>
+      <div class="gallery">
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-005-A &nbsp;·&nbsp; ASSEMBLY</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-drawing.svg" alt="Detail drawing placeholder">
+          <figcaption>DWG BD-2026-005-B &nbsp;·&nbsp; DETAIL</figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="../assets/placeholder-render.svg" alt="Exploded view placeholder">
+          <figcaption>DWG BD-2026-005-C &nbsp;·&nbsp; EXPLODED VIEW</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section analysis" style="padding-top:0">
+      <div>
+        <figure class="figure">
+          <img src="../assets/placeholder-analysis.svg" alt="Analysis result placeholder">
+          <figcaption>FIG. 2 &nbsp;—&nbsp; SIMULATION RESULT &nbsp;·&nbsp; PLACEHOLDER</figcaption>
+        </figure>
+      </div>
+      <div class="prose">
+        <h3>Analysis &amp; results</h3>
+        <p>Rated at 45 Nm output with a 1.4 application factor, the limiting mode is planet tooth bending — KISSsoft safety factors agree with AGMA hand calcs within 6%.</p>
+        <p>Measured backlash of 14 arc-minutes and 96.5% efficiency at rated load closely matched predictions from the mesh loss model.</p>
+        <div class="stats">
+          <div class="stat"><b>45 Nm</b><span>Rated torque</span></div>
+          <div class="stat"><b>96.5%</b><span>Efficiency</span></div>
+          <div class="stat"><b>14'</b><span>Backlash</span></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="pager">
+      <a href="prosthetic-hand.html">
+        <span class="label">&#8592; Previous</span>
+        <strong>Low-Cost Prosthetic Hand</strong>
+      </a>
+      <a href="drone-frame.html">
+        <span class="label">Next &#8594;</span>
+        <strong>Vibration-Tuned Drone Frame</strong>
+      </a>
+    </nav>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <div>
+          <span class="label label--accent">Get in touch</span>
+          <h2>Let's build something.</h2>
+          <a class="email" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="footer__links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Resume</a>
+        </div>
+      </div>
+      <div class="footer__fine">
+        <span>&#169; 2026 BISHESHA DASH</span>
+        <span>DRAWN TO SCALE · BUILT TO LAST</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

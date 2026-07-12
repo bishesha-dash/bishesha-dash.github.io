@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="'IBM Plex Mono', Menlo, monospace">
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e3e6ef" stroke-width="1"/>
+    </pattern>
+    <pattern id="gridBold" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#d3d8e8" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#fbfbf8"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect width="800" height="600" fill="url(#gridBold)"/>
+  <rect x="14" y="14" width="772" height="572" fill="none" stroke="#2242c8" stroke-width="1.5" opacity="0.55"/>
+  
+  <g stroke="#3a3f4c" stroke-width="2" fill="none">
+    <rect x="230" y="180" width="240" height="180"/>
+    <circle cx="350" cy="270" r="52"/>
+    <line x1="520" y1="180" x2="620" y2="180"/>
+    <line x1="520" y1="240" x2="620" y2="240"/>
+    <line x1="520" y1="300" x2="600" y2="300"/>
+    <line x1="520" y1="360" x2="580" y2="360"/>
+  </g>
+  
+  <g stroke="#2242c8" stroke-width="1" opacity="0.7" stroke-dasharray="10 4 2 4">
+    <line x1="284" y1="270" x2="416" y2="270"/>
+    <line x1="350" y1="204" x2="350" y2="336"/>
+  </g>
+  
+  <g stroke="#2242c8" stroke-width="1" fill="none" opacity="0.8">
+    <line x1="230" y1="412" x2="230" y2="428"/>
+    <line x1="470" y1="412" x2="470" y2="428"/>
+    <line x1="230" y1="420" x2="470" y2="420"/>
+    <path d="M 230 420 l 8 -3 v 6 z" fill="#2242c8"/>
+    <path d="M 470 420 l -8 -3 v 6 z" fill="#2242c8"/>
+  </g>
+  <text x="350" y="412" font-size="12" fill="#2242c8" text-anchor="middle">240</text>
+  <text x="400" y="500" font-size="15" letter-spacing="3" fill="#9aa0b0" text-anchor="middle">TECHNICAL DRAWING</text>
+  <text x="30" y="40" font-size="13" letter-spacing="2" fill="#2242c8">DETAIL DRAWING</text>
+  <text x="770" y="574" font-size="11" letter-spacing="2" fill="#9aa0b0" text-anchor="end">BD-PLCH · PLACEHOLDER</text>
+</svg>

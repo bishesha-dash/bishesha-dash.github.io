@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="'IBM Plex Mono', Menlo, monospace">
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e3e6ef" stroke-width="1"/>
+    </pattern>
+    <pattern id="gridBold" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#d3d8e8" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#fbfbf8"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect width="800" height="600" fill="url(#gridBold)"/>
+  <rect x="14" y="14" width="772" height="572" fill="none" stroke="#2242c8" stroke-width="1.5" opacity="0.55"/>
+  
+  <g stroke-width="0">
+    <path d="M 260 380 L 330 240 L 420 300 L 500 190 L 560 260 L 540 400 L 380 430 Z" fill="#2242c8" opacity="0.12"/>
+    <path d="M 300 350 L 350 270 L 430 320 L 490 240 L 530 290 L 515 380 L 400 400 Z" fill="#2242c8" opacity="0.22"/>
+    <path d="M 350 330 L 390 290 L 450 320 L 480 280 L 500 320 L 480 360 L 420 370 Z" fill="#2242c8" opacity="0.4"/>
+  </g>
+  <path d="M 260 380 L 330 240 L 420 300 L 500 190 L 560 260 L 540 400 L 380 430 Z" fill="none" stroke="#3a3f4c" stroke-width="2"/>
+  <g font-size="11" fill="#2242c8">
+    <text x="580" y="200">MAX</text>
+    <line x1="505" y1="195" x2="572" y2="197" stroke="#2242c8" stroke-width="1"/>
+  </g>
+  <text x="400" y="500" font-size="15" letter-spacing="3" fill="#9aa0b0" text-anchor="middle">FEA / CFD RESULT</text>
+  <text x="30" y="40" font-size="13" letter-spacing="2" fill="#2242c8">ANALYSIS RESULT</text>
+  <text x="770" y="574" font-size="11" letter-spacing="2" fill="#9aa0b0" text-anchor="end">BD-PLCH · PLACEHOLDER</text>
+</svg>
