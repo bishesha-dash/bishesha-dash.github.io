@@ -499,35 +499,49 @@
     return lines.join('\n');
   };
 
-  // quietly email the answers to him; resolves true only if it was delivered
-  const mailFeedback = async f => {
-    const to = String(C.feedbackTo || '').trim();
-    if (!to || !window.fetch) return false;
+  // POST JSON; resolves true only if the service confirms it went through
+  const postJSON = async (url, payload, confirmed, ms = 12000) => {
+    if (!window.fetch) return false;
     const ctrl = window.AbortController ? new AbortController() : null;
-    const timer = setTimeout(() => ctrl && ctrl.abort(), 15000);
+    const timer = setTimeout(() => ctrl && ctrl.abort(), ms);
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${to}`, {
+      const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          _subject: `Boyfriend performance review: ${f.rating}/5 🌺`,
-          _template: 'table',
-          _captcha: 'false',
-          Rating: `${f.rating}/5 — ${RATE[f.rating]}`,
-          'Work on': f.work.join(', ') || '—',
-          'Something she loves': f.loves || '—',
-          'Anything else': f.note || '—',
-          'Still loves you?': f.love || '—',
-        }),
+        body: JSON.stringify(payload),
         signal: ctrl ? ctrl.signal : undefined,
       });
       const data = await res.json().catch(() => ({}));
-      return res.ok && String(data.success) === 'true';
+      return res.ok && confirmed(data);
     } catch (_) {
       return false;
     } finally {
       clearTimeout(timer);
     }
+  };
+
+  // quietly email the answers to him: Web3Forms first, FormSubmit as a backup
+  const mailFeedback = async f => {
+    const subject = `Boyfriend performance review: ${f.rating}/5 🌺`;
+    const fields = {
+      Rating: `${f.rating}/5 — ${RATE[f.rating]}`,
+      'Work on': f.work.join(', ') || '—',
+      'Something she loves': f.loves || '—',
+      'Anything else': f.note || '—',
+      'Still loves you?': f.love || '—',
+    };
+
+    const key = String(C.web3formsKey || '').trim();
+    if (key && await postJSON('https://api.web3forms.com/submit',
+      { access_key: key, subject, from_name: 'Bishesha', ...fields },
+      d => d.success === true || String(d.success) === 'true')) return true;
+
+    const to = String(C.feedbackTo || '').trim();
+    if (to && await postJSON(`https://formsubmit.co/ajax/${to}`,
+      { _subject: subject, _template: 'table', _captcha: 'false', ...fields },
+      d => String(d.success) === 'true')) return true;
+
+    return false;
   };
 
   const showReceipt = (f, focus) => {

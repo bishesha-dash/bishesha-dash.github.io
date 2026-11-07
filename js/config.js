@@ -7,10 +7,12 @@ window.LOVE = {
   // Leave empty to hide it.
   togetherSince: '',
 
-  // Her feedback is emailed here automatically when she taps "Send feedback"
-  // (via formsubmit.co, no account needed). The very first submission from the live
-  // site sends an "Activate Form" email to this address; click it once and you're set.
-  // After activating, you can put FormSubmit's random alias here instead of the address.
+  // Her feedback is emailed to you automatically when she taps "Send feedback".
+  // Main route: Web3Forms. Get a free access key at https://web3forms.com
+  // (type your email, the key arrives by email) and paste it here.
+  web3formsKey: '02ec6516-f20f-45ab-95ba-6a51727eef46',
+
+  // Backup route: formsubmit.co (needs a one-time "Activate Form" click from its email).
   feedbackTo: 'shreyaskumar.1102@gmail.com',
 
   // Backup channels, shown only if the automatic email fails (and for coupon redemptions).
@@ -45,7 +47,6 @@ window.LOVE = {
       { src: 'assets/images/us/05.jpg', caption: '' },
       { src: 'assets/images/us/06.jpg', caption: '' },
       { src: 'assets/images/us/07.jpg', caption: '' },
-      { src: 'assets/images/us/08.jpg', caption: '' },
     ],
   },
 };
