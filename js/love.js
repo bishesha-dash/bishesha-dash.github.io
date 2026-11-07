@@ -499,16 +499,19 @@
     return lines.join('\n');
   };
 
-  // POST JSON; resolves true only if the service confirms it went through
-  const postJSON = async (url, payload, confirmed, ms = 12000) => {
-    if (!window.fetch) return false;
+  // POST as plain form data (a "simple" request, so the browser skips the CORS preflight);
+  // resolves true only if the service confirms it went through
+  const postForm = async (url, payload, confirmed, ms = 12000) => {
+    if (!window.fetch || !window.FormData) return false;
+    const body = new FormData();
+    Object.entries(payload).forEach(([k, v]) => body.append(k, v));
     const ctrl = window.AbortController ? new AbortController() : null;
     const timer = setTimeout(() => ctrl && ctrl.abort(), ms);
     try {
       const res = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload),
+        headers: { Accept: 'application/json' },
+        body,
         signal: ctrl ? ctrl.signal : undefined,
       });
       const data = await res.json().catch(() => ({}));
@@ -532,12 +535,12 @@
     };
 
     const key = String(C.web3formsKey || '').trim();
-    if (key && await postJSON('https://api.web3forms.com/submit',
+    if (key && await postForm('https://api.web3forms.com/submit',
       { access_key: key, subject, from_name: 'Bishesha', ...fields },
       d => d.success === true || String(d.success) === 'true')) return true;
 
     const to = String(C.feedbackTo || '').trim();
-    if (to && await postJSON(`https://formsubmit.co/ajax/${to}`,
+    if (to && await postForm(`https://formsubmit.co/ajax/${to}`,
       { _subject: subject, _template: 'table', _captcha: 'false', ...fields },
       d => String(d.success) === 'true')) return true;
 
