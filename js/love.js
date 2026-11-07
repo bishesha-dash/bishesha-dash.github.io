@@ -74,8 +74,13 @@
   let runCount = 0;
   let running = false;
   let lastDodge = 0;
+  let lastNoTouch = 0; // any No tap / dodge; a Yes "click" right after one is a stray finger, not a yes
+  let ghost = null;    // invisible stand-in that keeps Yes from sliding under her finger
+
+  noBtn.addEventListener('pointerdown', () => { lastNoTouch = performance.now(); });
 
   noBtn.addEventListener('click', () => {
+    lastNoTouch = performance.now();
     if (running) { dodge(); return; }
     const [line, label] = NO_SCRIPT[noCount];
     noCount += 1;
@@ -95,6 +100,7 @@
 
   function dodge() {
     const now = performance.now();
+    lastNoTouch = now;
     if (now - lastDodge < 280) return;
     lastDodge = now;
 
@@ -102,7 +108,14 @@
 
     const r = noBtn.getBoundingClientRect();
     if (!noBtn.classList.contains('is-running')) {
-      // lift it out of the card so it can roam the whole screen
+      // lift it out of the card so it can roam the whole screen, leaving an
+      // invisible placeholder so the Yes button stays exactly where it was
+      ghost = document.createElement('span');
+      ghost.className = 'no-ghost';
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.style.width = `${r.width}px`;
+      ghost.style.height = `${r.height}px`;
+      noBtn.replaceWith(ghost);
       body.appendChild(noBtn);
       noBtn.classList.add('is-running');
       noBtn.style.left = `${r.left}px`;
@@ -142,6 +155,13 @@
     noBtn.classList.add('is-gone');
     say(msg, 'The No button has left the chat.');
     setTimeout(() => noBtn.remove(), 500);
+    // after a beat, let Yes glide to the centre (nothing left to mis-tap by then)
+    setTimeout(() => {
+      if (!ghost) return;
+      ghost.style.width = '0px';
+      ghost.style.marginLeft = '-12px';
+      setTimeout(() => { if (ghost) ghost.remove(); ghost = null; }, 600);
+    }, 1200);
     setTimeout(() => {
       if (!$('.step[data-step="ask"]').classList.contains('is-active')) return;
       say(msg, 'Looks like there’s only one option now.');
@@ -158,6 +178,8 @@
 
   // — "Yes" —
   yesBtn.addEventListener('click', () => {
+    // a finger that was aiming for No shouldn't count as a yes
+    if (performance.now() - lastNoTouch < 700) return;
     if (noBtn.parentElement === body) {
       noBtn.classList.add('is-gone');
       setTimeout(() => noBtn.remove(), 400);

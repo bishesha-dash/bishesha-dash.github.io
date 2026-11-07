@@ -369,6 +369,12 @@ textarea.field { resize: vertical; min-height: 128px; }
   transition: left .45s cubic-bezier(.3, 1.3, .5, 1), top .45s cubic-bezier(.3, 1.3, .5, 1), opacity .4s, transform .4s;
 }
 
+.no-ghost {
+  display: block;
+  flex: none;
+  transition: width .5s var(--ease), margin .5s var(--ease);
+}
+
 .btn--no.is-gone {
   opacity: 0;
   transform: scale(.4) rotate(-20deg);
