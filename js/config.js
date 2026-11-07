@@ -7,11 +7,17 @@ window.LOVE = {
   // Leave empty to hide it.
   togetherSince: '',
 
-  // Where her feedback form and coupon redemptions get sent.
+  // Her feedback is emailed here automatically when she taps "Send feedback"
+  // (via formsubmit.co, no account needed). The very first submission from the live
+  // site sends an "Activate Form" email to this address; click it once and you're set.
+  // After activating, you can put FormSubmit's random alias here instead of the address.
+  feedbackTo: 'shreyaskumar.1102@gmail.com',
+
+  // Backup channels, shown only if the automatic email fails (and for coupon redemptions).
   // WhatsApp: full number with country code, digits only, e.g. '919876543210'.
   // If left empty, WhatsApp opens and lets her pick which chat to send it to.
   whatsapp: '',
-  email: '',
+  email: 'shreyaskumar.1102@gmail.com',
 
   photos: {
     // Photos of her. They slowly crossfade inside the arch beside

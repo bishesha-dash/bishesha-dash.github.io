@@ -59,7 +59,7 @@
     ['Hmm. That doesn’t sound right.', 'Think again'],
     ['Pretty sure you meant the other button.', 'Pretty please?'],
     ['I’m going to pretend I didn’t see that.', 'Bishesha, please'],
-    ['Okay. Now the No button is getting nervous.', 'Catch me'],
+    ['Okay. Now the No button is getting nervous.', 'NO'],
   ];
   const RUN_SCRIPT = [
     'Nope.',
@@ -227,19 +227,21 @@
     layer.className = 'bloom';
     layer.setAttribute('aria-hidden', 'true');
 
-    for (let i = 0; i < 26; i += 1) {
-      const size = 18 + Math.random() * 34;
+    const REAL = ['white', 'orange', 'pink'].map(n => `assets/flowers/${n}.webp`);
+    for (let i = 0; i < 24; i += 1) {
+      const size = 24 + Math.random() * 40;
       const angle = Math.random() * Math.PI * 2;
       const dist = 140 + Math.random() * reach;
       const dx = Math.cos(angle) * dist;
       const dy = Math.sin(angle) * dist - 60;
       const rot = (Math.random() - 0.5) * 400;
-      const el = document.createElement('div');
+      const el = document.createElement('img');
       el.className = 'bloom__f';
-      el.style.width = el.style.height = `${size}px`;
+      el.src = REAL[i % REAL.length];
+      el.alt = '';
+      el.style.width = `${size}px`;
       el.style.left = `${cx - size / 2}px`;
       el.style.top = `${cy - size / 2}px`;
-      el.innerHTML = flower(COLORS[i % COLORS.length]);
       layer.appendChild(el);
       el.animate([
         { transform: 'translate(0, 0) scale(.2) rotate(0deg)', opacity: 0 },
@@ -351,7 +353,7 @@
     gallery.innerHTML = us.map((p, i) => `
       <figure class="shot reveal" style="--d: ${(i % 3) * 90}ms">
         <button class="shot__open" type="button" data-i="${i}" aria-label="View photo${p.caption ? `: ${esc(p.caption)}` : ''}">
-          <img src="${esc(p.src)}" alt="${esc(p.alt || p.caption || 'Us')}" loading="lazy" decoding="async">
+          <img src="${esc(p.src)}" alt="${esc(p.alt || p.caption || 'Us')}" decoding="async">
         </button>
         ${p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ''}
       </figure>`).join('');
@@ -497,6 +499,37 @@
     return lines.join('\n');
   };
 
+  // quietly email the answers to him; resolves true only if it was delivered
+  const mailFeedback = async f => {
+    const to = String(C.feedbackTo || '').trim();
+    if (!to || !window.fetch) return false;
+    const ctrl = window.AbortController ? new AbortController() : null;
+    const timer = setTimeout(() => ctrl && ctrl.abort(), 15000);
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${to}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `Boyfriend performance review: ${f.rating}/5 🌺`,
+          _template: 'table',
+          _captcha: 'false',
+          Rating: `${f.rating}/5 — ${RATE[f.rating]}`,
+          'Work on': f.work.join(', ') || '—',
+          'Something she loves': f.loves || '—',
+          'Anything else': f.note || '—',
+          'Still loves you?': f.love || '—',
+        }),
+        signal: ctrl ? ctrl.signal : undefined,
+      });
+      const data = await res.json().catch(() => ({}));
+      return res.ok && String(data.success) === 'true';
+    } catch (_) {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+
   const showReceipt = (f, focus) => {
     const mini = `<span class="mini">${Array.from({ length: f.rating }, (_, i) => flower(COLORS[i])).join('')}</span>`;
     const rows = [['Rating', `${mini}${esc(RATE[f.rating])}`]];
@@ -510,21 +543,39 @@
     $('#send-wa').href = waLink(text);
     $('#send-mail').href = mailLink('Boyfriend performance review', text);
 
+    $('#receipt-text').textContent = f.sent
+      ? 'Shreyas has been notified, emotionally and by email. He’s probably reading it right now.'
+      : 'Shreyas has been notified (emotionally). The email didn’t go through, so send it to him this way:';
+    $('#receipt-actions').hidden = !!f.sent;
+
     fb.hidden = true;
     receipt.hidden = false;
     if (focus) receipt.focus({ preventScroll: true });
   };
 
-  fb.addEventListener('submit', e => {
+  const sendBtn = $('#fb-send');
+  let sending = false;
+
+  fb.addEventListener('submit', async e => {
     e.preventDefault();
+    if (sending) return;
     const f = collect();
     if (!f.rating) {
       say(fbMsg, 'Pick a flower first — even one. (Gently.)');
       rates[0].querySelector('input').focus();
       return;
     }
+    sending = true;
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
     fbMsg.textContent = '';
+
+    f.sent = await mailFeedback(f);
     local.set('feedback', f);
+
+    sending = false;
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Send feedback';
     showReceipt(f, true);
     receipt.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
   });

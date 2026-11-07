@@ -55,10 +55,13 @@
   <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
     <div class="glow" aria-hidden="true"></div>
 
+    <div class="stage">
+    <img class="peek peek--tr" src="assets/flowers/pink.webp" alt="" aria-hidden="true">
+    <img class="peek peek--bl" src="assets/flowers/orange.webp" alt="" aria-hidden="true">
+
     <div class="card" id="card">
 
       <div class="step is-active" data-step="ask">
-        <svg class="hb sway" style="--c: var(--hb-red)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
         <p class="eyebrow">for bishesha</p>
         <h1 class="card__title" id="gate-title">I’m sorry.</h1>
         <p class="card__text">I forgot our anniversary. There’s no good excuse — I messed up, and I know it.</p>
@@ -81,11 +84,12 @@
       </form>
 
       <div class="step" data-step="done" inert>
-        <svg class="hb hb--big sway" style="--c: var(--hb-pink)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+        <img class="card__flower" src="assets/flowers/red.webp" alt="" aria-hidden="true">
         <h2 class="card__title">Thank you.</h2>
         <p class="card__text">I love you. Come in —</p>
       </div>
 
+    </div>
     </div>
   </div>
 
@@ -95,16 +99,13 @@
 
     <!-- hero -->
     <header class="hero">
+      <img class="hero__flower hero__flower--tl" src="assets/flowers/white.webp" alt="" aria-hidden="true">
+      <img class="hero__flower hero__flower--br" src="assets/flowers/red.webp" alt="" aria-hidden="true">
       <div class="hero__inner">
-        <div class="reveal" style="--d: 300ms">
-          <svg class="hb sway" style="--c: var(--hb-red)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
-        </div>
         <p class="eyebrow reveal" style="--d: 450ms">a slightly late anniversary note</p>
         <h1 class="hero__title reveal" id="hello" tabindex="-1" style="--d: 600ms">Bishesha,<em>thank you for forgiving me.</em></h1>
         <p class="hero__lead reveal" style="--d: 800ms">I made you a small corner of the internet, to say the things I don’t say often enough. Take your time — scroll slowly.</p>
-      </div>
-      <a class="cue reveal" href="#you" style="--d: 1100ms"><span>scroll</span><i aria-hidden="true"></i></a>
-    </header>
+      </div>    </header>
 
 
     <!-- 01 · you -->
@@ -208,7 +209,7 @@
       </div>
 
       <div class="lucky reveal">
-        <svg class="hb sway" style="--c: var(--hb-coral)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+        <img class="lucky__flower" src="assets/flowers/orange.webp" alt="" aria-hidden="true" loading="lazy">
         <p class="lucky__line">I’m so <span>lucky</span><br>to have you.</p>
         <p class="lucky__sub">Not lucky like finding money in an old jacket. Lucky like the universe made a mistake in my favour — and I plan to spend a very long time deserving it.</p>
       </div>
@@ -244,7 +245,7 @@
                 <span class="letter__hint">tap to open</span>
               </span>
               <span class="letter__face letter__back">
-                <span class="letter__body">Close your eyes for a second. I’m probably thinking about you right now too. Then call me — I’ll pick up. My ringer is on now. For you.</span>
+                <span class="letter__body">I miss you too. It hits me out of nowhere, usually in the middle of work — and somehow I never tell you, I just keep going. So I’m telling you now: I miss you. A lot.</span>
                 <span class="letter__sign">— S.</span>
               </span>
             </span>
@@ -432,7 +433,7 @@
           </fieldset>
 
           <div class="fb__foot">
-            <button class="btn btn--primary" type="submit">Send feedback</button>
+            <button class="btn btn--primary" id="fb-send" type="submit">Send feedback</button>
             <p class="fb__msg" id="fb-msg" aria-live="polite"></p>
           </div>
         </form>
@@ -440,9 +441,9 @@
         <div class="receipt" id="receipt" tabindex="-1" hidden>
           <p class="eyebrow">feedback received</p>
           <h3 class="receipt__title">Thank you, Bishesha.</h3>
-          <p class="receipt__text">Shreyas has been notified (emotionally). To make sure it actually reaches him:</p>
+          <p class="receipt__text" id="receipt-text">Shreyas has been notified (emotionally).</p>
           <dl class="receipt__list" id="receipt-list"></dl>
-          <div class="receipt__actions">
+          <div class="receipt__actions" id="receipt-actions">
             <a class="btn btn--primary" id="send-wa" target="_blank" rel="noopener">Send on WhatsApp</a>
             <a class="btn btn--ghost" id="send-mail">Send by email</a>
           </div>
@@ -454,12 +455,11 @@
 
     <!-- the end -->
     <footer class="end">
-      <div class="end__flowers reveal" aria-hidden="true">
-        <svg class="hb" style="--c: var(--hb-red); transform: rotate(-14deg)"><use href="#hibiscus"/></svg>
-        <svg class="hb" style="--c: var(--hb-pink); transform: rotate(9deg)"><use href="#hibiscus"/></svg>
-        <svg class="hb" style="--c: var(--hb-yellow); transform: rotate(-4deg)"><use href="#hibiscus"/></svg>
-        <svg class="hb" style="--c: var(--hb-coral); transform: rotate(16deg)"><use href="#hibiscus"/></svg>
-        <svg class="hb" style="--c: var(--hb-lilac); transform: rotate(-10deg)"><use href="#hibiscus"/></svg>
+      <div class="bouquet reveal" aria-hidden="true">
+        <img class="bouquet__l" src="assets/flowers/pink.webp" alt="" loading="lazy">
+        <img class="bouquet__r" src="assets/flowers/orange.webp" alt="" loading="lazy">
+        <img class="bouquet__c" src="assets/flowers/red.webp" alt="" loading="lazy">
+        <img class="bouquet__f" src="assets/flowers/white.webp" alt="" loading="lazy">
       </div>
       <p class="end__line reveal">Happy anniversary,<br>Bishesha.</p>
       <p class="end__sub reveal">A little late, I know. But I’m not going anywhere — and neither is this date, ever again.</p>

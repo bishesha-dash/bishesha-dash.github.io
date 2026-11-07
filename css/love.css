@@ -158,6 +158,8 @@ a { color: inherit; }
 
 .btn--block { width: 100%; }
 
+.btn:disabled { opacity: .7; cursor: progress; transform: none; }
+
 .field {
   width: 100%;
   padding: 14px 18px;
@@ -225,10 +227,45 @@ textarea.field { resize: vertical; min-height: 128px; }
   to   { transform: translate3d(2%, 2%, 0) rotate(8deg); }
 }
 
+/* the card, with two real hibiscus tucked behind its corners */
+.stage {
+  position: relative;
+  width: min(440px, 100%);
+}
+
+.peek {
+  position: absolute;
+  z-index: 0;
+  height: auto;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  rotate: var(--r, 0deg);
+  filter: drop-shadow(0 14px 22px rgba(120, 40, 60, .16));
+  animation: peek-in 1.4s var(--ease) .45s both, sway-soft 10s ease-in-out 1.8s infinite;
+}
+.peek--tr { width: 156px; top: -64px; right: -70px; --r: 14deg; }
+.peek--bl { width: 132px; bottom: -52px; left: -64px; --r: -16deg; animation-delay: .65s, 3s; }
+
+@keyframes peek-in {
+  from { opacity: 0; scale: .7; }
+}
+
+@keyframes sway-soft {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@media (max-width: 520px) {
+  .peek--tr { width: 112px; top: -50px; right: -30px; }
+  .peek--bl { width: 98px; bottom: -42px; left: -26px; }
+}
+
 .card {
   position: relative;
+  z-index: 1;
   display: grid;
-  width: min(440px, 100%);
+  width: 100%;
   padding: 44px clamp(22px, 6vw, 40px) 30px;
   background: var(--surface);
   border-radius: 28px;
@@ -269,8 +306,13 @@ textarea.field { resize: vertical; min-height: 128px; }
   transition-delay: .15s, .15s, 0s;
 }
 
-.card .hb { --s: 56px; margin-bottom: 18px; }
-.card .hb--big { --s: 76px; }
+.card__flower {
+  width: 128px;
+  height: auto;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 10px 16px rgba(120, 40, 60, .14));
+  animation: sway-soft 8s ease-in-out infinite;
+}
 
 .card__title {
   font-family: var(--serif);
@@ -378,8 +420,12 @@ textarea.field { resize: vertical; min-height: 128px; }
   pointer-events: none;
   overflow: hidden;
 }
-.bloom__f { position: absolute; will-change: transform, opacity; }
-.bloom__f .hb { --s: 100%; }
+.bloom__f {
+  position: absolute;
+  height: auto;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 6px 10px rgba(120, 40, 60, .14));
+}
 
 /* =========================================================
    THE PAGE
@@ -462,7 +508,34 @@ textarea.field { resize: vertical; min-height: 128px; }
     var(--bg);
 }
 
-.hero .hb { --s: 60px; margin: 0 auto 28px; }
+.hero__inner { position: relative; z-index: 1; }
+
+/* white and red hibiscus peeking in from the corners */
+.hero__flower {
+  position: absolute;
+  z-index: 0;
+  height: auto;
+  pointer-events: none;
+  rotate: var(--r, 0deg);
+  filter: drop-shadow(0 18px 28px rgba(120, 40, 60, .14));
+  animation: sway-soft 12s ease-in-out infinite;
+  transition: opacity 1.8s ease .5s, scale 1.8s var(--ease) .5s;
+}
+.hero__flower--tl {
+  width: clamp(150px, 22vw, 300px);
+  top: clamp(-72px, -4vw, -28px);
+  left: clamp(-84px, -5vw, -34px);
+  --r: -22deg;
+}
+.hero__flower--br {
+  width: clamp(168px, 25vw, 330px);
+  bottom: clamp(-64px, -3vw, -22px);
+  right: clamp(-84px, -5vw, -34px);
+  --r: 8deg;
+  animation-delay: -5s;
+  transition-delay: .8s;
+}
+.is-locked .hero__flower { opacity: 0; scale: .85; }
 
 .hero__title {
   margin-top: 18px;
@@ -488,41 +561,6 @@ textarea.field { resize: vertical; min-height: 128px; }
   font-size: 18px;
   color: var(--muted);
 }
-
-.cue {
-  position: absolute;
-  left: 50%;
-  bottom: 28px;
-  translate: -50% 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--muted);
-}
-
-.cue i {
-  position: relative;
-  width: 1px;
-  height: 44px;
-  overflow: hidden;
-  background: var(--line-strong);
-}
-
-.cue i::after {
-  content: "";
-  position: absolute;
-  left: 0; top: -40%;
-  width: 100%; height: 40%;
-  background: var(--accent);
-  animation: cue 2.2s cubic-bezier(.6, 0, .4, 1) infinite;
-}
-
-@keyframes cue { to { top: 100%; } }
 
 /* ---------- placeholder tiles ---------- */
 
@@ -722,7 +760,13 @@ textarea.field { resize: vertical; min-height: 128px; }
   padding: clamp(100px, 15vw, 190px) 16px;
   text-align: center;
 }
-.lucky .hb { --s: 40px; margin: 0 auto 30px; }
+.lucky__flower {
+  width: 118px;
+  height: auto;
+  margin: 0 auto 26px;
+  filter: drop-shadow(0 12px 18px rgba(120, 40, 60, .14));
+  animation: sway-soft 9s ease-in-out infinite;
+}
 
 .lucky__line {
   font-family: var(--serif);
@@ -1161,13 +1205,22 @@ textarea.field { resize: vertical; min-height: 128px; }
   text-align: center;
 }
 
-.end__flowers {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 38px;
+/* a small bouquet: every colour she likes */
+.bouquet {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto 40px;
 }
-.end__flowers .hb { --s: 26px; }
+.bouquet img {
+  position: absolute;
+  height: auto;
+  filter: drop-shadow(0 10px 16px rgba(120, 40, 60, .14));
+}
+.bouquet__c { width: 152px; left: 74px; top: 0; z-index: 2; }
+.bouquet__l { width: 112px; left: 4px; top: 62px; rotate: -16deg; z-index: 1; }
+.bouquet__r { width: 112px; right: 4px; top: 58px; rotate: 14deg; z-index: 1; }
+.bouquet__f { width: 88px; left: 106px; top: 116px; rotate: 10deg; z-index: 3; }
 
 .end__line {
   font-family: var(--serif);
