@@ -1,184 +1,484 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bishesha Dash — Mechanical Engineer</title>
-  <meta name="description" content="Portfolio of Bishesha Dash, mechanical engineer — design, analysis and prototyping projects.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>For Bishesha</title>
+  <meta name="description" content="A small note for Bishesha.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fbf6f1">
+  <link rel="icon" type="image/svg+xml" href="assets/hibiscus.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/love.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      if (sessionStorage.getItem('forgiven') && !/[?&]again\b/.test(location.search)) {
+        document.documentElement.classList.add('is-forgiven');
+      }
+    } catch (e) {}
+  </script>
 </head>
-<body>
+<body class="is-locked">
 
-  <nav class="nav">
-    <div class="wrap nav__inner">
-      <a class="nav__logo" href="index.html">BISHESHA<span>.</span>DASH</a>
-      <div class="nav__links">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <!-- the hibiscus, drawn once and reused everywhere -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="hb-eye" cx="0" cy="0" r="18" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#6e0b29" stop-opacity=".8"/>
+        <stop offset=".55" stop-color="#8f1238" stop-opacity=".32"/>
+        <stop offset="1" stop-color="#8f1238" stop-opacity="0"/>
+      </radialGradient>
+      <g id="hb-petal">
+        <path stroke="#fff" stroke-opacity=".45" stroke-width=".8" d="M0 0C-10-8-24-19-24-31C-24-41-15-47-7-44C-4-46.5 4-46.5 7-44C15-47 24-41 24-31C24-19 10-8 0 0Z"/>
+        <path fill="none" stroke="#6e0b29" stroke-opacity=".16" stroke-width=".7" stroke-linecap="round" d="M0-6V-38M0-6L-9-35M0-6L9-35"/>
+      </g>
+      <symbol id="hibiscus" viewBox="-50 -50 100 100">
+        <use href="#hb-petal"/>
+        <use href="#hb-petal" transform="rotate(72)"/>
+        <use href="#hb-petal" transform="rotate(144)"/>
+        <use href="#hb-petal" transform="rotate(216)"/>
+        <use href="#hb-petal" transform="rotate(288)"/>
+        <circle r="18" fill="url(#hb-eye)"/>
+        <path d="M0 0Q5-12 15-23" fill="none" stroke="#f6e1a6" stroke-width="2" stroke-linecap="round"/>
+        <g fill="#f2c14e"><circle cx="9" cy="-15" r="1.3"/><circle cx="11.5" cy="-12.8" r="1.2"/><circle cx="12.2" cy="-17.4" r="1.2"/><circle cx="9.8" cy="-18.8" r="1.1"/><circle cx="13.6" cy="-15.2" r="1.1"/></g>
+        <g fill="#a3123a"><circle cx="15.6" cy="-25" r="1.6"/><circle cx="17.8" cy="-23.2" r="1.5"/><circle cx="13.8" cy="-26.8" r="1.5"/><circle cx="17.4" cy="-26.4" r="1.4"/></g>
+      </symbol>
+    </defs>
+  </svg>
 
-  <header class="hero">
-    <div class="wrap">
-      <span class="label label--accent">Mechanical Engineer · Portfolio</span>
-      <h1>Bishesha Dash designs machines that <em>earn their tolerances</em>.</h1>
-      <p class="hero__tagline">
-        Design, simulation and hands-on prototyping — from first sketch to
-        finished part. Currently focused on structural optimisation and
-        mechanism design.
-      </p>
-      <div class="hero__meta">
-        <span class="label"><b>Based in</b> City, Country</span>
-        <span class="label"><b>Focus</b> Design &amp; FEA</span>
-        <span class="label"><b>Status</b> Open to opportunities</span>
-      </div>
-    </div>
-  </header>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <main>
-    <section class="section" id="projects">
-      <div class="wrap">
-        <div class="section__head">
-          <h2>Selected projects</h2>
-          <span class="label">06 ENTRIES · 2024&#8211;2026</span>
+  <!-- ═════════════════════════  THE APOLOGY  ═════════════════════════ -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="card" id="card">
+
+      <div class="step is-active" data-step="ask">
+        <svg class="hb sway" style="--c: var(--hb-red)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+        <p class="eyebrow">for bishesha</p>
+        <h1 class="card__title" id="gate-title">I’m sorry.</h1>
+        <p class="card__text">I forgot our anniversary. There’s no good excuse — I messed up, and I know it.</p>
+        <p class="card__ask">Will you forgive me?</p>
+        <div class="card__actions">
+          <button class="btn btn--primary" id="yes" type="button">Yes</button>
+          <button class="btn btn--ghost btn--no" id="no" type="button">No</button>
         </div>
-        <div class="grid">
-        <a class="card" href="projects/robotic-gripper.html">
-          <div class="card__thumb"><img src="assets/robotic-gripper.svg" alt="Adaptive Robotic Gripper placeholder rendering"></div>
-          <div class="card__body">
-            <div class="card__top">
-              <span class="label label--accent">01 / BD-2026-001</span>
-              <span class="card__arrow">&#8594;</span>
+        <p class="card__msg" id="msg" aria-live="polite"></p>
+      </div>
+
+      <form class="step" data-step="type" id="forgive-form" autocomplete="off" inert>
+        <p class="eyebrow">one more thing</p>
+        <h2 class="card__title">Okay, but I need it in writing.</h2>
+        <p class="card__text">Type this, word for word:</p>
+        <p class="phrase" id="phrase" aria-hidden="true"></p>
+        <input class="field" id="forgive-input" type="text" placeholder="type it here…" aria-label="Type: I forgive you Shreyas" autocapitalize="sentences" autocorrect="off" spellcheck="false">
+        <button class="btn btn--primary btn--block" id="forgive-submit" type="submit">Forgive him</button>
+        <p class="card__msg" id="msg2" aria-live="polite"></p>
+      </form>
+
+      <div class="step" data-step="done" inert>
+        <svg class="hb hb--big sway" style="--c: var(--hb-pink)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+        <h2 class="card__title">Thank you.</h2>
+        <p class="card__text">I love you. Come in —</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═════════════════════════  THE PAGE  ═════════════════════════ -->
+  <main id="main" inert>
+
+    <!-- hero -->
+    <header class="hero">
+      <div class="hero__inner">
+        <div class="reveal" style="--d: 300ms">
+          <svg class="hb sway" style="--c: var(--hb-red)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+        </div>
+        <p class="eyebrow reveal" style="--d: 450ms">a slightly late anniversary note</p>
+        <h1 class="hero__title reveal" id="hello" tabindex="-1" style="--d: 600ms">Bishesha,<em>thank you for forgiving me.</em></h1>
+        <p class="hero__lead reveal" style="--d: 800ms">I made you a small corner of the internet, to say the things I don’t say often enough. Take your time — scroll slowly.</p>
+      </div>
+      <a class="cue reveal" href="#you" style="--d: 1100ms"><span>scroll</span><i aria-hidden="true"></i></a>
+    </header>
+
+
+    <!-- 01 · you -->
+    <section class="section" id="you">
+      <div class="wrap you">
+        <figure class="portrait reveal" id="her">
+          <div class="arch">
+            <div class="ph" style="--c: var(--hb-pink)">
+              <svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+              <span>photo coming soon</span>
             </div>
-            <h3>Adaptive Robotic Gripper</h3>
-            <p class="card__desc">Two-finger underactuated gripper that conforms to irregular objects using a single actuator.</p>
-            <div class="card__tags"><span class="tag">SolidWorks</span><span class="tag">FEA</span><span class="tag">3D Printing</span></div>
           </div>
-        </a>
-        <a class="card" href="projects/fsae-upright.html">
-          <div class="card__thumb"><img src="assets/fsae-upright.svg" alt="FSAE Suspension Upright placeholder rendering"></div>
-          <div class="card__body">
-            <div class="card__top">
-              <span class="label label--accent">02 / BD-2026-002</span>
-              <span class="card__arrow">&#8594;</span>
-            </div>
-            <h3>FSAE Suspension Upright</h3>
-            <p class="card__desc">Topology-optimised front upright for a Formula Student car — 27% lighter than the previous season.</p>
-            <div class="card__tags"><span class="tag">Topology Opt.</span><span class="tag">CNC</span><span class="tag">Al 7075</span></div>
-          </div>
-        </a>
-        <a class="card" href="projects/heat-exchanger.html">
-          <div class="card__thumb"><img src="assets/heat-exchanger.svg" alt="Compact Heat Exchanger Study placeholder rendering"></div>
-          <div class="card__body">
-            <div class="card__top">
-              <span class="label label--accent">03 / BD-2026-003</span>
-              <span class="card__arrow">&#8594;</span>
-            </div>
-            <h3>Compact Heat Exchanger Study</h3>
-            <p class="card__desc">CFD-driven redesign of a shell-and-tube exchanger, improving heat transfer 22% at equal pressure drop.</p>
-            <div class="card__tags"><span class="tag">CFD</span><span class="tag">Thermal</span><span class="tag">ANSYS Fluent</span></div>
-          </div>
-        </a>
-        <a class="card" href="projects/prosthetic-hand.html">
-          <div class="card__thumb"><img src="assets/prosthetic-hand.svg" alt="Low-Cost Prosthetic Hand placeholder rendering"></div>
-          <div class="card__body">
-            <div class="card__top">
-              <span class="label label--accent">04 / BD-2026-004</span>
-              <span class="card__arrow">&#8594;</span>
-            </div>
-            <h3>Low-Cost Prosthetic Hand</h3>
-            <p class="card__desc">Body-powered prosthetic hand printable for under $40, designed around a whippletree tendon system.</p>
-            <div class="card__tags"><span class="tag">Design for AM</span><span class="tag">Mechanisms</span><span class="tag">TPU</span></div>
-          </div>
-        </a>
-        <a class="card" href="projects/planetary-gearbox.html">
-          <div class="card__thumb"><img src="assets/planetary-gearbox.svg" alt="Planetary Gearbox Design placeholder rendering"></div>
-          <div class="card__body">
-            <div class="card__top">
-              <span class="label label--accent">05 / BD-2026-005</span>
-              <span class="card__arrow">&#8594;</span>
-            </div>
-            <h3>Planetary Gearbox Design</h3>
-            <p class="card__desc">Single-stage 6:1 planetary gearbox designed from first principles — tooth geometry to housing.</p>
-            <div class="card__tags"><span class="tag">Gear Design</span><span class="tag">KISSsoft</span><span class="tag">Machining</span></div>
-          </div>
-        </a>
-        <a class="card" href="projects/drone-frame.html">
-          <div class="card__thumb"><img src="assets/drone-frame.svg" alt="Vibration-Tuned Drone Frame placeholder rendering"></div>
-          <div class="card__body">
-            <div class="card__top">
-              <span class="label label--accent">06 / BD-2026-006</span>
-              <span class="card__arrow">&#8594;</span>
-            </div>
-            <h3>Vibration-Tuned Drone Frame</h3>
-            <p class="card__desc">Carbon-fibre quadcopter frame with arm resonances tuned away from motor excitation bands.</p>
-            <div class="card__tags"><span class="tag">Modal Analysis</span><span class="tag">CFRP</span><span class="tag">Dynamics</span></div>
-          </div>
-        </a>
+          <figcaption id="her-caption">you, being you</figcaption>
+        </figure>
+
+        <div>
+          <header class="head reveal">
+            <p class="eyebrow"><b>01</b>you</p>
+            <h2 class="title">Why you mean so much to me</h2>
+          </header>
+
+          <ol class="reasons">
+            <li class="reason reveal">
+              <span class="reason__n">i.</span>
+              <h3>You make ordinary days worth remembering.</h3>
+              <p>A random Tuesday with you somehow turns into a story I’m still telling weeks later.</p>
+            </li>
+            <li class="reason reveal">
+              <span class="reason__n">ii.</span>
+              <h3>You know the real, messy me — and you stay.</h3>
+              <p>You’ve seen all my worst habits (exhibit A: the reason this website exists) and you still choose me. I don’t take that lightly.</p>
+            </li>
+            <li class="reason reveal">
+              <span class="reason__n">iii.</span>
+              <h3>You’re the smartest person I know.</h3>
+              <p>You design machines that earn their tolerances. Somehow you’ve tolerated me too — which might be your most impressive work yet.</p>
+            </li>
+            <li class="reason reveal">
+              <span class="reason__n">iv.</span>
+              <h3>You make me want to be better.</h3>
+              <p>Not because you ask me to. Because you deserve someone who shows up, every single time.</p>
+            </li>
+            <li class="reason reveal">
+              <span class="reason__n">v.</span>
+              <h3>You feel like home.</h3>
+              <p>It doesn’t matter where we are. If you’re there, I’m okay.</p>
+            </li>
+            <li class="reason reveal">
+              <span class="reason__n">vi.</span>
+              <h3>Your laugh.</h3>
+              <p>That’s it. That’s the whole reason. It fixes everything.</p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about" style="padding-top:0">
+
+    <!-- 02 · us -->
+    <section class="section section--tint" id="us">
       <div class="wrap">
-        <div class="section__head">
-          <h2>About</h2>
-          <span class="label">B. DASH · ME</span>
-        </div>
-        <div class="about">
-          <div>
-            <p>
-              I'm a mechanical engineer who likes the whole arc of a project —
-              the napkin sketch, the CAD model, the simulation that says "no",
-              the redesign, and finally the part you can hold. Placeholder bio:
-              replace this with a couple of sentences about background,
-              education and what she loves working on.
-            </p>
-            <p>
-              Comfortable across design (SolidWorks, Fusion 360), analysis
-              (ANSYS, hand calcs first), and making (FDM printing, machining,
-              composites). The projects above are placeholders — each one links
-              to a full write-up with drawings, analysis details and results.
-            </p>
+        <header class="head head--center reveal">
+          <p class="eyebrow"><b>02</b>us</p>
+          <h2 class="title">A few of my favourite frames</h2>
+          <p class="lead">Every one of them has you in it. That’s not a coincidence.</p>
+        </header>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+
+    <!-- 03 · me -->
+    <section class="section" id="me">
+      <div class="wrap wrap--narrow">
+        <header class="head reveal">
+          <p class="eyebrow"><b>03</b>me</p>
+          <h2 class="title">I know I don’t always get it right.</h2>
+        </header>
+        <p class="prose reveal">I forget things. Dates, texts, the thing you told me twice. Sometimes I get so lost in my own head that I forget to show you what you mean to me — and you should never have to wonder about that.</p>
+
+        <div class="ledger">
+          <div class="ledger__col ledger--forget reveal">
+            <h3 class="eyebrow">Things I forget</h3>
+            <ul>
+              <li>Our anniversary. (Clearly.)</li>
+              <li>To text back when I get busy</li>
+              <li>To say thank you for the little things</li>
+              <li>That you can’t read my mind</li>
+            </ul>
           </div>
-          <dl class="about__facts">
-            <dt>Education</dt>
-            <dd>B.Tech Mechanical Engineering — University Name</dd>
-            <dt>Toolbox</dt>
-            <dd>SolidWorks · Fusion 360 · ANSYS · MATLAB · Python</dd>
-            <dt>Interests</dt>
-            <dd>Structural optimisation · Mechanisms · Thermal systems</dd>
-          </dl>
+          <div class="ledger__col ledger--keep reveal" style="--d: 120ms">
+            <h3 class="eyebrow">Things I’ll never forget</h3>
+            <ul>
+              <li>The way you say my name</li>
+              <li>How easy it is to be myself around you</li>
+              <li>Every time you showed up for me without being asked</li>
+              <li>How lucky I am</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="lucky reveal">
+        <svg class="hb sway" style="--c: var(--hb-coral)" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>
+        <p class="lucky__line">I’m so <span>lucky</span><br>to have you.</p>
+        <p class="lucky__sub">Not lucky like finding money in an old jacket. Lucky like the universe made a mistake in my favour — and I plan to spend a very long time deserving it.</p>
+      </div>
+
+      <div class="wrap wrap--narrow">
+        <h3 class="sub reveal">So, a few promises</h3>
+        <ol class="promises">
+          <li class="reveal">Our anniversary now lives in three calendars, two alarms and one sticky note on my mirror.</li>
+          <li class="reveal">When you’re talking, my phone goes face-down.</li>
+          <li class="reveal">I’ll plan the next date — all of it, including where we eat.</li>
+          <li class="reveal">I’ll say “I love you” out loud more often, instead of just thinking it really hard.</li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- 04 · letters -->
+    <section class="section section--tint" id="letters">
+      <div class="wrap">
+        <header class="head head--center reveal">
+          <p class="eyebrow"><b>04</b>letters</p>
+          <h2 class="title">Open when…</h2>
+          <p class="lead">For the days I’m not there — or not enough.</p>
+        </header>
+
+        <div class="letters">
+          <button class="letter reveal" type="button" aria-expanded="false" style="--c: var(--hb-pink)">
+            <span class="letter__inner">
+              <span class="letter__face letter__front">
+                <span class="env"><svg class="env__paper" viewBox="0 0 64 46" aria-hidden="true"><rect x="1" y="1" width="62" height="44" rx="5"/><path d="M3 4L32 26L61 4"/></svg><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></span>
+                <span class="letter__when">open when</span>
+                <span class="letter__title">you miss me</span>
+                <span class="letter__hint">tap to open</span>
+              </span>
+              <span class="letter__face letter__back">
+                <span class="letter__body">Close your eyes for a second. I’m probably thinking about you right now too. Then call me — I’ll pick up. My ringer is on now. For you.</span>
+                <span class="letter__sign">— S.</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="letter reveal" type="button" aria-expanded="false" style="--c: var(--hb-coral); --d: 80ms">
+            <span class="letter__inner">
+              <span class="letter__face letter__front">
+                <span class="env"><svg class="env__paper" viewBox="0 0 64 46" aria-hidden="true"><rect x="1" y="1" width="62" height="44" rx="5"/><path d="M3 4L32 26L61 4"/></svg><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></span>
+                <span class="letter__when">open when</span>
+                <span class="letter__title">you’re mad at me</span>
+                <span class="letter__hint">tap to open</span>
+              </span>
+              <span class="letter__face letter__back">
+                <span class="letter__body">You’re probably right. I’m sorry. Tell me what I did and let me fix it — and if I can’t fix it right away, let me sit next to you until it feels better. Snacks are on me.</span>
+                <span class="letter__sign">— S.</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="letter reveal" type="button" aria-expanded="false" style="--c: var(--hb-lilac); --d: 160ms">
+            <span class="letter__inner">
+              <span class="letter__face letter__front">
+                <span class="env"><svg class="env__paper" viewBox="0 0 64 46" aria-hidden="true"><rect x="1" y="1" width="62" height="44" rx="5"/><path d="M3 4L32 26L61 4"/></svg><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></span>
+                <span class="letter__when">open when</span>
+                <span class="letter__title">you can’t sleep</span>
+                <span class="letter__hint">tap to open</span>
+              </span>
+              <span class="letter__face letter__back">
+                <span class="letter__body">Breathe in for four, out for six. Think about the next trip we’ll take, and how I’ll definitely forget to pack something. I’ll be right here when you wake up.</span>
+                <span class="letter__sign">— S.</span>
+              </span>
+            </span>
+          </button>
+
+          <button class="letter reveal" type="button" aria-expanded="false" style="--c: var(--hb-yellow); --d: 240ms">
+            <span class="letter__inner">
+              <span class="letter__face letter__front">
+                <span class="env"><svg class="env__paper" viewBox="0 0 64 46" aria-hidden="true"><rect x="1" y="1" width="62" height="44" rx="5"/><path d="M3 4L32 26L61 4"/></svg><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></span>
+                <span class="letter__when">open when</span>
+                <span class="letter__title">you need a reminder</span>
+                <span class="letter__hint">tap to open</span>
+              </span>
+              <span class="letter__face letter__back">
+                <span class="letter__body">You are brilliant, kind, and so much more capable than you give yourself credit for. And I love you. That part never changes.</span>
+                <span class="letter__sign">— S.</span>
+              </span>
+            </span>
+          </button>
         </div>
       </div>
     </section>
+
+
+    <!-- 05 · coupons -->
+    <section class="section" id="coupons">
+      <div class="wrap">
+        <header class="head head--center reveal">
+          <p class="eyebrow"><b>05</b>coupons</p>
+          <h2 class="title">To make it up to you</h2>
+          <p class="lead">Redeemable anytime. No expiry date. Strictly non-transferable.</p>
+        </header>
+
+        <div class="coupons">
+          <article class="coupon reveal" data-id="dinner" style="--c: var(--hb-coral)">
+            <div class="coupon__main">
+              <p class="coupon__kick"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>good for</p>
+              <h3 class="coupon__title">One dinner, anywhere you want</h3>
+              <p class="coupon__fine">My treat. And no “I don’t know, you pick.”</p>
+              <span class="coupon__stamp" aria-hidden="true">redeemed</span>
+            </div>
+            <div class="coupon__stub"><button class="coupon__btn" type="button">Redeem</button></div>
+          </article>
+
+          <article class="coupon reveal" data-id="day" style="--c: var(--hb-yellow); --d: 80ms">
+            <div class="coupon__main">
+              <p class="coupon__kick"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>good for</p>
+              <h3 class="coupon__title">A whole day, planned by me</h3>
+              <p class="coupon__fine">You just show up. I handle everything — including remembering it.</p>
+              <span class="coupon__stamp" aria-hidden="true">redeemed</span>
+            </div>
+            <div class="coupon__stub"><button class="coupon__btn" type="button">Redeem</button></div>
+          </article>
+
+          <article class="coupon reveal" data-id="hugs" data-unlimited style="--c: var(--hb-pink)">
+            <div class="coupon__main">
+              <p class="coupon__kick"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>good for</p>
+              <h3 class="coupon__title">Unlimited hugs</h3>
+              <p class="coupon__fine">No questions asked. Valid even when I’m being annoying. Never runs out.</p>
+              <span class="coupon__stamp" aria-hidden="true">redeemed</span>
+            </div>
+            <div class="coupon__stub"><button class="coupon__btn" type="button">Redeem</button></div>
+          </article>
+
+          <article class="coupon reveal" data-id="right" style="--c: var(--hb-lilac); --d: 80ms">
+            <div class="coupon__main">
+              <p class="coupon__kick"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>good for</p>
+              <h3 class="coupon__title">One “you were right”</h3>
+              <p class="coupon__fine">Said out loud, with no “but”. Use it wisely.</p>
+              <span class="coupon__stamp" aria-hidden="true">redeemed</span>
+            </div>
+            <div class="coupon__stub"><button class="coupon__btn" type="button">Redeem</button></div>
+          </article>
+
+          <article class="coupon reveal" data-id="flowers" style="--c: var(--hb-red)">
+            <div class="coupon__main">
+              <p class="coupon__kick"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>good for</p>
+              <h3 class="coupon__title">Flowers, for no reason</h3>
+              <p class="coupon__fine">Hibiscus, obviously. Every colour I can find.</p>
+              <span class="coupon__stamp" aria-hidden="true">redeemed</span>
+            </div>
+            <div class="coupon__stub"><button class="coupon__btn" type="button">Redeem</button></div>
+          </article>
+
+          <article class="coupon reveal" data-id="movie" style="--c: var(--hb-peach); --d: 80ms">
+            <div class="coupon__main">
+              <p class="coupon__kick"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg>good for</p>
+              <h3 class="coupon__title">Movie night, your pick</h3>
+              <p class="coupon__fine">No complaints. I won’t fall asleep. (I’ll try very hard not to fall asleep.)</p>
+              <span class="coupon__stamp" aria-hidden="true">redeemed</span>
+            </div>
+            <div class="coupon__stub"><button class="coupon__btn" type="button">Redeem</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 06 · feedback -->
+    <section class="section section--tint" id="feedback">
+      <div class="wrap">
+        <header class="head head--center reveal">
+          <p class="eyebrow"><b>06</b>feedback</p>
+          <h2 class="title">How am I doing?</h2>
+          <p class="lead">Your feedback helps us improve our service. (I&nbsp;am the&nbsp;service.)</p>
+        </header>
+
+        <form class="fb reveal" id="fb" novalidate>
+          <fieldset class="q">
+            <legend class="q__label">Overall, how would you rate your boyfriend?</legend>
+            <div class="rating" id="rating">
+              <label class="rate" data-v="1" style="--c: var(--hb-red)"><input class="sr" type="radio" name="rating" value="1" aria-label="1 out of 5"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></label>
+              <label class="rate" data-v="2" style="--c: var(--hb-pink)"><input class="sr" type="radio" name="rating" value="2" aria-label="2 out of 5"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></label>
+              <label class="rate" data-v="3" style="--c: var(--hb-coral)"><input class="sr" type="radio" name="rating" value="3" aria-label="3 out of 5"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></label>
+              <label class="rate" data-v="4" style="--c: var(--hb-yellow)"><input class="sr" type="radio" name="rating" value="4" aria-label="4 out of 5"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></label>
+              <label class="rate" data-v="5" style="--c: var(--hb-lilac)"><input class="sr" type="radio" name="rating" value="5" aria-label="5 out of 5"><svg class="hb" aria-hidden="true" focusable="false"><use href="#hibiscus"/></svg></label>
+            </div>
+            <p class="rate-text" id="rate-text" aria-live="polite">tap a flower</p>
+          </fieldset>
+
+          <fieldset class="q">
+            <legend class="q__label">What should he work on?</legend>
+            <p class="q__hint">Pick as many as apply. (Be gentle.)</p>
+            <div class="chips">
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="Remembering dates"><span>Remembering dates</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="Replying faster"><span>Replying faster</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="Planning dates"><span>Planning dates</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="Listening better"><span>Listening better</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="More hugs"><span>More hugs</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="More flowers"><span>More flowers</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="Staying awake on calls"><span>Staying awake on calls</span></label>
+              <label class="chip"><input class="sr" type="checkbox" name="work" value="Nothing, he’s perfect"><span>Nothing, he’s perfect</span></label>
+            </div>
+          </fieldset>
+
+          <label class="q">
+            <span class="q__label">One thing he does that you love</span>
+            <span class="q__hint">So he knows to keep doing it.</span>
+            <input class="field" type="text" name="loves" maxlength="240" placeholder="…">
+          </label>
+
+          <label class="q">
+            <span class="q__label">Anything else you want to tell him?</span>
+            <span class="q__hint">Complaints, compliments, demands — all welcome.</span>
+            <textarea class="field" name="note" rows="4" maxlength="2000"></textarea>
+          </label>
+
+          <fieldset class="q">
+            <legend class="q__label">Do you still love him?</legend>
+            <div class="chips">
+              <label class="chip"><input class="sr" type="radio" name="love" value="Yes"><span>Yes</span></label>
+              <label class="chip"><input class="sr" type="radio" name="love" value="Of course"><span>Of course</span></label>
+              <label class="chip"><input class="sr" type="radio" name="love" value="More than ever"><span>More than ever</span></label>
+            </div>
+          </fieldset>
+
+          <div class="fb__foot">
+            <button class="btn btn--primary" type="submit">Send feedback</button>
+            <p class="fb__msg" id="fb-msg" aria-live="polite"></p>
+          </div>
+        </form>
+
+        <div class="receipt" id="receipt" tabindex="-1" hidden>
+          <p class="eyebrow">feedback received</p>
+          <h3 class="receipt__title">Thank you, Bishesha.</h3>
+          <p class="receipt__text">Shreyas has been notified (emotionally). To make sure it actually reaches him:</p>
+          <dl class="receipt__list" id="receipt-list"></dl>
+          <div class="receipt__actions">
+            <a class="btn btn--primary" id="send-wa" target="_blank" rel="noopener">Send on WhatsApp</a>
+            <a class="btn btn--ghost" id="send-mail">Send by email</a>
+          </div>
+          <button class="linkbtn" id="fb-edit" type="button">edit my answers</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- the end -->
+    <footer class="end">
+      <div class="end__flowers reveal" aria-hidden="true">
+        <svg class="hb" style="--c: var(--hb-red); transform: rotate(-14deg)"><use href="#hibiscus"/></svg>
+        <svg class="hb" style="--c: var(--hb-pink); transform: rotate(9deg)"><use href="#hibiscus"/></svg>
+        <svg class="hb" style="--c: var(--hb-yellow); transform: rotate(-4deg)"><use href="#hibiscus"/></svg>
+        <svg class="hb" style="--c: var(--hb-coral); transform: rotate(16deg)"><use href="#hibiscus"/></svg>
+        <svg class="hb" style="--c: var(--hb-lilac); transform: rotate(-10deg)"><use href="#hibiscus"/></svg>
+      </div>
+      <p class="end__line reveal">Happy anniversary,<br>Bishesha.</p>
+      <p class="end__sub reveal">A little late, I know. But I’m not going anywhere — and neither is this date, ever again.</p>
+      <p class="end__days reveal" id="days" hidden></p>
+      <p class="end__sign reveal">Yours, always,<span class="end__name">Shreyas</span></p>
+      <p class="end__fine">made by hand, with love, for B.</p>
+    </footer>
+
   </main>
 
-  <footer class="footer" id="contact">
-    <div class="wrap">
-      <div class="footer__inner">
-        <div>
-          <span class="label label--accent">Get in touch</span>
-          <h2>Let's build something.</h2>
-          <a class="email" href="mailto:hello@example.com">hello@example.com</a>
-        </div>
-        <div class="footer__links">
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
-          <a href="#">Resume</a>
-        </div>
-      </div>
-      <div class="footer__fine">
-        <span>&#169; 2026 BISHESHA DASH</span>
-        <span>DRAWN TO SCALE · BUILT TO LAST</span>
-      </div>
-    </div>
-  </footer>
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" type="button" aria-label="Close photo">&times;</button>
+    <figure>
+      <img alt="">
+      <figcaption></figcaption>
+    </figure>
+  </div>
 
+  <script src="js/config.js"></script>
+  <script src="js/love.js"></script>
 </body>
 </html>

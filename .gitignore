@@ -1,0 +1,6 @@
+# original phone photos stay local (large, and they carry location metadata)
+*.HEIC
+*.heic
+*.HEIF
+*.heif
+.DS_Store
